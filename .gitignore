@@ -279,3 +279,4 @@ django_learning_place/media/
 .env
 .envs/*
 !.envs/.local/
+.idea

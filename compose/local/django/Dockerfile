@@ -1,4 +1,4 @@
-ARG PYTHON_VERSION=3.9-slim-buster
+ARG PYTHON_VERSION=3.9-buster
 
 # define an alias for the specfic python version used in this file.
 FROM python:${PYTHON_VERSION} as python
@@ -10,10 +10,12 @@ ARG BUILD_ENVIRONMENT=local
 
 # Install apt packages
 RUN apt-get update && apt-get install --no-install-recommends -y \
-  # dependencies for building Python packages
   build-essential \
-  # psycopg2 dependencies
-  libpq-dev
+  libssl-dev \
+  libffi-dev \
+  python3-dev \
+  cargo \
+  zlib1g-dev
 
 # Requirements are installed here to ensure they will be cached.
 COPY ./requirements .
